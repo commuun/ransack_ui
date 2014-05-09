@@ -1,4 +1,17 @@
 (($) ->
+  # Setup the default translations for the various text fields
+  $.ransack_ui = {}
+  $.ransack_ui.translations = []
+
+  # The basic English translation keys
+  $.ransack_ui.translations['en'] =
+    select_a_field: 'Select a field',
+    search_entity: 'Search',
+    add_a_search_term: 'Add a search term'
+
+  # The currently selected locale
+  $.ransack_ui.locale = 'en'
+
   $.widget 'ransack.ransack_search_form',
     options: {}
 
@@ -313,7 +326,7 @@
               tags: []
               tokenSeparators: [',']
               formatNoMatches: (t) ->
-                "Add a search term"
+                $.ransack_ui.translations[$.ransack_ui.locale].add_a_search_term
 
         multi_query.select2('val', values)
 
@@ -321,7 +334,7 @@
       selected_attribute_val = selected_attribute.val()
       # Set up Select2 for query input
       query_input.select2
-        placeholder: "Search #{selected_attribute.data('ajax-entity')}"
+        placeholder: "#{$.ransack_ui.translations[$.ransack_ui.locale].search_entity} #{selected_attribute.data('ajax-entity')}"
         minimumInputLength: 1
         allowClear: true
         multiple: multiple
@@ -435,11 +448,11 @@
       container.find('select.ransack_predicate').select2
         width: '160px'
         formatNoMatches: (term) ->
-          "Select a field first"
+          $.ransack_ui.translations[$.ransack_ui.locale].select_a_field
 
       container.find('select.ransack_attribute').select2
         width: '230px'
-        placeholder: "Select a Field"
+        placeholder: $.ransack_ui.translations[$.ransack_ui.locale].select_a_field
         allowClear: true
         formatSelection: (object, container) ->
           # If initializing and element is not present,
@@ -465,7 +478,7 @@
 
       @element.find('select.ransack_sort').select2
         width: '230px'
-        placeholder: "Select a Field"
+        placeholder: $.ransack_ui.translations[$.ransack_ui.locale].select_a_field
 
     init_button_group_select: (containers) ->
       containers.find('select.ransack_combinator, select.ransack_sort_order').button_group_select()
