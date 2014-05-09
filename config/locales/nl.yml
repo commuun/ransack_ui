@@ -1,0 +1,29 @@
+nl:
+  ransack_ui: 
+    select_a_field: "Kies een veld" 
+    select_a_field_first: "Kies eerst een veld" 
+    search_entity: "Zoek" 
+    add_a_search_term: "Voeg een zoekopdracht toe" 
+  ransack:
+    predicates:
+      alt:
+        date:
+          lt: voor
+          lt_any: voor één van
+          lt_all: voor alle
+          lteq: voor of op
+          lteq_any: voor of op één van
+          lteq_all: voor of op alle
+          gt: na
+          gt_any: na één van
+          gt_all: na alle
+          gteq: na of op
+          gteq_any: na of op één van
+          gteq_all: na of op alle
+
+    submit: Zoeken
+    add_group: Voeg een filter groep toe
+    group_first: 'Toon resultaten met %{combinator} de volgende criteria'
+    group_rest: ! '...en met %{combinator} de volgende criteria'
+    add_condition: "Voeg een filter toe"
+    remove_condition: "Verwijder filter"
